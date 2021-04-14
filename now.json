@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "version": 2,
+  "env": {
+    "ETH_GAS_STATION_API_KEY": "@eth_gas_station_api_key"
+  }
+}
