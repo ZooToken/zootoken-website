@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
-import {
-  ZOOTOKEN_CONTRACT_ETHERSCAN_URL,
-  MATCHA_ZOOTOKEN_MAKET_PAGE,
-} from '../utils/config';
+import { ZOOTOKEN_CONTRACT_ETHERSCAN_URL } from '../utils/config';
 import { H3, P } from '../components/Typography';
 import { PrimaryButtonLink } from '../components/Buttons';
 import { hexToRGBA } from '../utils/styles';
 import { BaseLink } from '../components/BaseLink';
+
+import { routes } from '../utils/routes';
 
 const PageFooter = styled.div`
   display: flex;
@@ -116,15 +116,11 @@ export const Footer: React.FC = () => {
         </Column>
         {!isAuctionPage && (
           <Column style={{ justifyContent: 'center' }}>
-            <PrimaryButtonLink
-              as="a"
-              href={MATCHA_ZOOTOKEN_MAKET_PAGE}
-              target="_blank"
-              rel="noopener"
-              style={{ width: '306px' }}
-            >
-              Buy ZOO
-            </PrimaryButtonLink>
+            <Link passHref href={routes.AUCTION}>
+              <PrimaryButtonLink as="a" style={{ width: '306px' }}>
+                Buy the ZOO
+              </PrimaryButtonLink>
+            </Link>
           </Column>
         )}
       </SplitLayout>

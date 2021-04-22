@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { useTheme } from 'styled-components';
 import { NextPage } from 'next';
+import Link from 'next/link';
 import { useWindowSize } from 'react-use';
 
 import { H1, H3, H4, P } from '../components/Typography';
@@ -12,9 +13,7 @@ import { Footer } from '../components/Footer';
 import { routes } from '../utils/routes';
 import {
   CRYPTO_VOXELS_ZOO_VISIT_URL,
-  ZOOTOKEN_EARN_ZOO_FORM_URL,
   ZOOTOKEN_COMMUNITY_TREASURY_URL,
-  MATCHA_ZOOTOKEN_MAKET_PAGE,
 } from '../utils/config';
 
 const ResponsiveH1 = styled(H1)`
@@ -158,23 +157,11 @@ const HomePage: NextPage = () => {
                   , a virtual world built on Ethereum.
                 </StyledP>
                 <Flex>
-                  <GoldenPrimaryButtonLink
-                    as="a"
-                    href={ZOOTOKEN_EARN_ZOO_FORM_URL}
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    Earn ZOO
-                  </GoldenPrimaryButtonLink>
-                  <GoldenPrimaryButtonLink
-                    as="a"
-                    href={MATCHA_ZOOTOKEN_MAKET_PAGE}
-                    target="_blank"
-                    rel="noopener"
-                    style={{ width: '162px' }}
-                  >
-                    Buy ZOO
-                  </GoldenPrimaryButtonLink>
+                  <Link passHref href={routes.AUCTION}>
+                    <GoldenPrimaryButtonLink as="a" style={{ width: '162px' }}>
+                      Buy the ZOO
+                    </GoldenPrimaryButtonLink>
+                  </Link>
                 </Flex>
               </FlexCol>
             </Column>
