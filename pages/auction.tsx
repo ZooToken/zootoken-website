@@ -313,6 +313,7 @@ const AuctionPage: NextPage = () => {
         </HeaderContainer>
         <AuctionContainer>
           <StyledH2>The Zoo Auction</StyledH2>
+          {!auctionState && <p style={{color: 'white', fontSize: '18px'}}>loading...</p>}
           {formattedPriceSeries && <PriceChart data={formattedPriceSeries} />}
           <BuyContainer>
             <AuctionStateInfo
@@ -407,8 +408,8 @@ const AuctionStateInfo: FC<ActionStateInfoProps> = ({
             Current price {currentPrice} ETH
           </P>
           {account ? (
-            <GoldenPrimaryButton style={{ width: '250px' }} onClick={buyZooCB}>
-              Buy the Cryptovoxels ZOO!
+            <GoldenPrimaryButton style={{ width: '360px' }} onClick={buyZooCB}>
+              Buy the Cryptovoxels ZOO parcel for {currentPrice} ETH
             </GoldenPrimaryButton>
           ) : (
             <Link passHref href={routes.LOGIN}>
