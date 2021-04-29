@@ -3,6 +3,7 @@ import { routes } from '../utils/routes';
 import styled from 'styled-components';
 import { BaseLink } from './BaseLink';
 import { GoldenPrimaryButton } from './Buttons';
+import { useEffect, useState } from 'react';
 
 const StyledConnectLink = styled(BaseLink)`
   text-decoration: underline;
@@ -28,6 +29,10 @@ const PrimaryButtonLink = styled(GoldenPrimaryButton)`
 export const NFTClaim = (props: {}) => {
   const { library, account } = useWeb3React();
 
+  const [ethereumAddress, setEthereumAddress] = useState<string>(account || '');
+
+  console.log({ account, ethereumAddress });
+
   if (!account) {
     return (
       <StyledConnectLink href={routes.LOGIN}>
@@ -41,6 +46,17 @@ export const NFTClaim = (props: {}) => {
       <p style={{ fontSize: '20px' }}>Enter ethereum address:</p>
       <input
         type="text"
+        value={ethereumAddress}
+        onChange={(e) => {
+          e.preventDefault();
+          setEthereumAddress(e.target.value);
+        }}
+        onClick={() => {
+          console.log('clicked');
+          if (account && ethereumAddress == '') {
+            setEthereumAddress(account);
+          }
+        }}
         style={{
           marginBottom: '20px',
           padding: '20px',
