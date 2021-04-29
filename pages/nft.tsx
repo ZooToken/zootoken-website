@@ -7,6 +7,7 @@ import { H1, H2, P } from '../components/Typography';
 import { GoldenPrimaryButton } from '../components/Buttons';
 import { useWeb3React } from '@web3-react/core';
 import { BaseLink } from '../components/BaseLink';
+import { NFTClaim } from '../components/NFTClaim';
 import { routes } from '../utils/routes';
 
 const NFTPageWrapper = styled.div`
@@ -59,6 +60,7 @@ const PrimaryButtonLink = styled(GoldenPrimaryButton)`
   align-items: center;
   justify-content: center;
   margin-right: 30px;
+  margin: auto;
 `;
 
 const StyledH1 = styled(H1)`
@@ -86,20 +88,6 @@ const StyledConnectLink = styled(BaseLink)`
     text-decoration: none;
   }
 `;
-
-const Eligibility = (props: {}) => {
-  const { library, account } = useWeb3React();
-
-  if (!account) {
-    return (
-      <StyledConnectLink href={routes.LOGIN}>
-        Connect wallet to check eligibility
-      </StyledConnectLink>
-    );
-  }
-
-  return <PrimaryButtonLink>Claim!!!</PrimaryButtonLink>;
-};
 
 const NFTPage: NextPage = () => {
   return (
@@ -129,7 +117,7 @@ const NFTPage: NextPage = () => {
             />
           </a>
           <div style={{ color: 'white' }}>
-            <Eligibility />
+            <NFTClaim />
           </div>
         </MeatContainer>
       </NFTPageWrapper>
