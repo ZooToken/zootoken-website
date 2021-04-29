@@ -31,15 +31,23 @@ export const NFTClaim = (props: {}) => {
 
   const [ethereumAddress, setEthereumAddress] = useState<string>(account || '');
 
-  console.log({ account, ethereumAddress });
+  const [checkingState, setCheckingState] = useState<
+    'ready' | 'loading' | 'eligibile' | 'not-eligible'
+  >('ready');
 
   if (!account) {
     return (
-      <StyledConnectLink href={routes.LOGIN}>
-        Connect wallet to check eligibility
-      </StyledConnectLink>
+      <div style={{ color: 'white' }}>
+        <StyledConnectLink href={routes.LOGIN}>
+          Connect wallet to check eligibility
+        </StyledConnectLink>
+      </div>
     );
   }
+
+  const checkEligibility = async () => {
+    setCheckingState('loading');
+  };
 
   return (
     <div style={{ textAlign: 'center', margin: 'auto' }}>
@@ -65,7 +73,12 @@ export const NFTClaim = (props: {}) => {
         }}
       />
       <div style={{ marginTop: '20px' }}>
-        <PrimaryButtonLink>Check eligibility</PrimaryButtonLink>
+        {checkingState === 'ready' && (
+          <PrimaryButtonLink onClick={checkEligibility}>
+            Check eligibility
+          </PrimaryButtonLink>
+        )}
+        {checkingState === 'loading' && <p>Loading..</p>}
       </div>
     </div>
   );
