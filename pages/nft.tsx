@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import { H1, H2, P } from '../components/Typography';
 import { GoldenPrimaryButton } from '../components/Buttons';
 import { useWeb3React } from '@web3-react/core';
+import { BaseLink } from '../components/BaseLink';
+import { routes } from '../utils/routes';
 
 const NFTPageWrapper = styled.div`
   background: #f6f6ff;
@@ -67,11 +69,39 @@ const StyledHeaderP = styled(P)`
   line-height: 21px;
 `;
 
-const NFTPage: NextPage = () => {
-  const signMessage = async () => {
-    console.log('hello');
-  };
+const StyledProposalP = styled(P)`
+  font-size: 18px;
+  line-height: 26px;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  color: #ffffff;
+`;
 
+const StyledConnectLink = styled(BaseLink)`
+  text-decoration: underline;
+  color: white;
+  font-size: 18px;
+
+  :hover,
+  :active {
+    text-decoration: none;
+  }
+`;
+
+const Eligibility = (props: {}) => {
+  const { library, account } = useWeb3React();
+
+  if (!account) {
+    return (
+      <StyledConnectLink href={routes.LOGIN}>
+        Connect wallet to check eligibility
+      </StyledConnectLink>
+    );
+  }
+
+  return <PrimaryButtonLink>Claim!!!</PrimaryButtonLink>;
+};
+
+const NFTPage: NextPage = () => {
   return (
     <>
       <NFTPageWrapper>
@@ -99,7 +129,7 @@ const NFTPage: NextPage = () => {
             />
           </a>
           <div style={{ color: 'white' }}>
-            <PrimaryButtonLink onClick={signMessage}>Claim!!</PrimaryButtonLink>
+            <Eligibility />
           </div>
         </MeatContainer>
       </NFTPageWrapper>
