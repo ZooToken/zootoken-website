@@ -1,12 +1,11 @@
 import { InfuraProvider } from '@ethersproject/providers';
-import { Contract } from "@ethersproject/contracts";
+import { Contract } from '@ethersproject/contracts';
 import { Wallet } from '@ethersproject/wallet';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import { H1, H2, P } from '../components/Typography';
 import { GoldenPrimaryButton } from '../components/Buttons';
 import { useWeb3React } from '@web3-react/core';
-
 
 const NFTPageWrapper = styled.div`
   background: #f6f6ff;
@@ -71,34 +70,40 @@ const StyledHeaderP = styled(P)`
 const NFTPage: NextPage = () => {
   const signMessage = async () => {
     console.log('hello');
-  }
-  
-  
+  };
+
   return (
     <>
       <NFTPageWrapper>
         <NFTPageContainer>
           <StyledH1 fontSize="48px">Limited Edition $ZOO NFT</StyledH1>
-          <StyledHeaderP style={{ maxWidth: '900px', fontSize: '18px', padding: '10px' }}>
-          $ZOO token holders who held $ZOO on April 29th are eligible to claim this free NFT, minted by Architect Ogar.
+          <StyledHeaderP
+            style={{ maxWidth: '900px', fontSize: '18px', padding: '10px' }}
+          >
+            $ZOO token holders who held $ZOO on April 29th are eligible to claim
+            this free NFT, minted by Architect Ogar.
           </StyledHeaderP>
         </NFTPageContainer>
         <MeatContainer>
-          <a href="https://rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:526923:0x69df7dd293eeff309d8fa12126be3f5d2eb277e2?tab=details" target="_blank"><video
-              src='https://storage.opensea.io/files/8538e36131277394de9cad700a7e68c9.mp4'
+          <a
+            href="https://rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:526923:0x69df7dd293eeff309d8fa12126be3f5d2eb277e2?tab=details"
+            target="_blank"
+          >
+            <video
+              src="https://storage.opensea.io/files/8538e36131277394de9cad700a7e68c9.mp4"
               className={``}
               autoPlay
               muted
               loop
-              style={{height: '300px', margin: '40px'}}
-            /></a>
-          <div style={{color: 'white'}}>
+              style={{ height: '300px', margin: '40px' }}
+            />
+          </a>
+          <div style={{ color: 'white' }}>
             <PrimaryButtonLink onClick={signMessage}>Claim!!</PrimaryButtonLink>
           </div>
         </MeatContainer>
       </NFTPageWrapper>
     </>
   );
-  
-}
+};
 export default NFTPage;
