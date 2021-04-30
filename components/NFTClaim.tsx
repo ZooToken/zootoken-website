@@ -5,6 +5,8 @@ import { BaseLink } from './BaseLink';
 import { GoldenPrimaryButton } from './Buttons';
 import { useEffect, useState } from 'react';
 
+const NFT_CLAIM_ADDRESS = 'todo';
+
 const StyledConnectLink = styled(BaseLink)`
   text-decoration: underline;
   color: white;

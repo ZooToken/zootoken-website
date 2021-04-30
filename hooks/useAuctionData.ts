@@ -52,6 +52,9 @@ export const useAuctionData = () => {
         readZooLib.getAuctionState(),
       ]);
 
+      console.log({ auctionMetadata });
+      console.log({ auctionState });
+
       setAuctionData({ auctionMetadata, auctionState });
     };
 

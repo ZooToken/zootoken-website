@@ -367,6 +367,7 @@ const AuctionStateInfo: FC<ActionStateInfoProps> = ({
     return null;
   }
 
+  console.log('state', auctionState.state);
   switch (auctionState.state) {
     case 'AUCTION_NOT_STARTED':
       return (
