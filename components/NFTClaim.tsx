@@ -3,9 +3,7 @@ import { routes } from '../utils/routes';
 import styled from 'styled-components';
 import { BaseLink } from './BaseLink';
 import { GoldenPrimaryButton } from './Buttons';
-import { useEffect, useState } from 'react';
-
-const NFT_CLAIM_ADDRESS = 'todo';
+import { useState } from 'react';
 
 const StyledConnectLink = styled(BaseLink)`
   text-decoration: underline;
@@ -29,7 +27,8 @@ const PrimaryButtonLink = styled(GoldenPrimaryButton)`
 `;
 
 export const NFTClaim = (props: {}) => {
-  const { library, account } = useWeb3React();
+  const { account } = useWeb3React();
+  console.log(props);
 
   const [ethereumAddress, setEthereumAddress] = useState<string>(account || '');
 

@@ -1,14 +1,6 @@
-import { InfuraProvider } from '@ethersproject/providers';
-import { Contract } from '@ethersproject/contracts';
-import { Wallet } from '@ethersproject/wallet';
 import { NextPage } from 'next';
 import styled from 'styled-components';
-import { H1, H2, P } from '../components/Typography';
-import { GoldenPrimaryButton } from '../components/Buttons';
-import { useWeb3React } from '@web3-react/core';
-import { BaseLink } from '../components/BaseLink';
-import { NFTClaim } from '../components/NFTClaim';
-import { routes } from '../utils/routes';
+import { H1, P } from '../components/Typography';
 
 const NFTPageWrapper = styled.div`
   background: #f6f6ff;
@@ -42,51 +34,12 @@ const MeatContainer = styled.div`
   }
 `;
 
-const StyledH2 = styled(H2)`
-  color: black;
-  text-align: center;
-  font-size: 30px;
-  margin-bottom: 10px;
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    font-size: 24px;
-  }
-`;
-
-const PrimaryButtonLink = styled(GoldenPrimaryButton)`
-  text-decoration: none;
-  width: 162px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 30px;
-  margin: auto;
-`;
-
 const StyledH1 = styled(H1)`
   text-align: center;
 `;
 const StyledHeaderP = styled(P)`
   text-align: center;
   line-height: 21px;
-`;
-
-const StyledProposalP = styled(P)`
-  font-size: 18px;
-  line-height: 26px;
-  font-feature-settings: 'tnum' on, 'lnum' on;
-  color: #ffffff;
-`;
-
-const StyledConnectLink = styled(BaseLink)`
-  text-decoration: underline;
-  color: white;
-  font-size: 18px;
-
-  :hover,
-  :active {
-    text-decoration: none;
-  }
 `;
 
 const NFTPage: NextPage = () => {
@@ -98,8 +51,8 @@ const NFTPage: NextPage = () => {
           <StyledHeaderP
             style={{ maxWidth: '900px', fontSize: '18px', padding: '10px' }}
           >
-            $ZOO token holders who held $ZOO on April 29th are eligible to claim
-            this free NFT, minted by Architect Ogar.
+            $ZOO token holders who held $ZOO on April 30th will be eligible to
+            claim this free NFT, minted by Architect Ogar.
           </StyledHeaderP>
         </NFTPageContainer>
         <MeatContainer>
@@ -117,7 +70,10 @@ const NFTPage: NextPage = () => {
             />
           </a>
           <div style={{ color: 'white' }}>
-            <NFTClaim />
+            <p style={{ fontSize: '20px' }}>
+              NFT will be claimable on or before May 5th.
+            </p>
+            {/* <NFTClaim /> */}
           </div>
         </MeatContainer>
       </NFTPageWrapper>

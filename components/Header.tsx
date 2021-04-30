@@ -168,6 +168,9 @@ const Header = () => {
             <Link passHref href={routes.AUCTION}>
               <HeaderLink isHome={isHome}>Auction</HeaderLink>
             </Link>
+            <Link passHref href={routes.NFT}>
+              <HeaderLink isHome={isHome}>NFT</HeaderLink>
+            </Link>
             {account ? (
               <HeaderLink isHome={isHome} onClick={handleDisconnectAccount}>
                 Log out

@@ -2,15 +2,15 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer } from "ethers";
-import { Provider } from "@ethersproject/providers";
+import { Contract, Signer } from 'ethers';
+import { Provider } from '@ethersproject/providers';
 
-import type { Nftdrop } from "../Nftdrop";
+import type { Nftdrop } from '../Nftdrop';
 
 export class Nftdrop__factory {
   static connect(
     address: string,
-    signerOrProvider: Signer | Provider
+    signerOrProvider: Signer | Provider,
   ): Nftdrop {
     return new Contract(address, _abi, signerOrProvider) as Nftdrop;
   }
@@ -20,219 +20,219 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "_nftAddress",
-        type: "address",
+        internalType: 'address',
+        name: '_nftAddress',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "_nftTokenId",
-        type: "uint256",
+        internalType: 'uint256',
+        name: '_nftTokenId',
+        type: 'uint256',
       },
     ],
-    stateMutability: "nonpayable",
-    type: "constructor",
+    stateMutability: 'nonpayable',
+    type: 'constructor',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "targetAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'targetAddress',
+        type: 'address',
       },
       {
-        internalType: "bytes",
-        name: "targetCallData",
-        type: "bytes",
+        internalType: 'bytes',
+        name: 'targetCallData',
+        type: 'bytes',
       },
     ],
-    name: "emergencyExecute",
+    name: 'emergencyExecute',
     outputs: [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
       },
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "aCustomAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'aCustomAddress',
+        type: 'address',
       },
       {
-        internalType: "bytes32",
-        name: "r",
-        type: "bytes32",
+        internalType: 'bytes32',
+        name: 'r',
+        type: 'bytes32',
       },
       {
-        internalType: "bytes32",
-        name: "s",
-        type: "bytes32",
+        internalType: 'bytes32',
+        name: 's',
+        type: 'bytes32',
       },
       {
-        internalType: "uint8",
-        name: "v",
-        type: "uint8",
+        internalType: 'uint8',
+        name: 'v',
+        type: 'uint8',
       },
     ],
-    name: "getSigner",
+    name: 'getSigner',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "pure",
-    type: "function",
+    stateMutability: 'pure',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "address1",
-        type: "address",
+        internalType: 'address',
+        name: 'address1',
+        type: 'address',
       },
     ],
-    name: "hasReedeemed",
+    name: 'hasReedeemed',
     outputs: [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "nftAddress",
+    name: 'nftAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "nftTokenId",
+    name: 'nftTokenId',
     outputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "operator",
-        type: "address",
+        internalType: 'address',
+        name: 'operator',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "from",
-        type: "address",
+        internalType: 'address',
+        name: 'from',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'id',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
       },
       {
-        internalType: "bytes",
-        name: "data",
-        type: "bytes",
+        internalType: 'bytes',
+        name: 'data',
+        type: 'bytes',
       },
     ],
-    name: "onERC1155Received",
+    name: 'onERC1155Received',
     outputs: [
       {
-        internalType: "bytes4",
-        name: "",
-        type: "bytes4",
+        internalType: 'bytes4',
+        name: '',
+        type: 'bytes4',
       },
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "owner",
+    name: 'owner',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "address1",
-        type: "address",
+        internalType: 'address',
+        name: 'address1',
+        type: 'address',
       },
       {
-        internalType: "bytes32",
-        name: "r",
-        type: "bytes32",
+        internalType: 'bytes32',
+        name: 'r',
+        type: 'bytes32',
       },
       {
-        internalType: "bytes32",
-        name: "s",
-        type: "bytes32",
+        internalType: 'bytes32',
+        name: 's',
+        type: 'bytes32',
       },
       {
-        internalType: "uint8",
-        name: "v",
-        type: "uint8",
+        internalType: 'uint8',
+        name: 'v',
+        type: 'uint8',
       },
     ],
-    name: "redeemNft",
+    name: 'redeemNft',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "bytes4",
-        name: "interfaceID",
-        type: "bytes4",
+        internalType: 'bytes4',
+        name: 'interfaceID',
+        type: 'bytes4',
       },
     ],
-    name: "supportsInterface",
+    name: 'supportsInterface',
     outputs: [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
       },
     ],
-    stateMutability: "pure",
-    type: "function",
+    stateMutability: 'pure',
+    type: 'function',
   },
 ];

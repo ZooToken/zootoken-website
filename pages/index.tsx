@@ -229,7 +229,7 @@ const HomePage: NextPage = () => {
           <ColumnWithMargin>
             <FlexCol>
               <H3 style={{ marginBottom: '37px', textAlign: 'left' }}>
-                How does the ZOO token work?
+                How did the ZOO token work?
               </H3>
               <StyledP
                 style={{
@@ -250,24 +250,18 @@ const HomePage: NextPage = () => {
                 <span style={{ fontWeight: 'bold' }}>Sale Proceeds</span>
                 <br />
                 <br />
-                On April 20th, 2021 the ZOO smart contract will automatically
-                initiate a dutch auction to sell The Bronx Zoo in its entirety
-                in exchange for ETH. The starting price will be 100 ETH and
-                decrease over 10 days. Upon the sale completing, all proceeds
-                will be distributed amongst ZOO token holders based on
-                proportional ownership.
-                <br />
-                <br />
-                For example, if the Bronx Zoo parcel sells for 20 ETH in the
-                auction, each ZOO token will be able to be redeemed for 0.002
-                ETH each.
+                On April 20th, 2021 the ZOO smart contract automatically
+                initiated a dutch auction to sell The Bronx Zoo in its entirety
+                in exchange for ETH. Upon the sale completing, all proceeds are
+                distributed amongst ZOO token holders based on proportional
+                ownership.
                 <br />
                 <br />
                 <span style={{ marginRight: '8px' }}>🏦</span>
                 <span style={{ fontWeight: 'bold' }}>Treasury Governance</span>
                 <br />
                 <br />
-                Each ZOO token also allows holders to vote in{' '}
+                Each ZOO token also allowed holders to vote in{' '}
                 <StyledLink passHref href={routes.GOVERNANCE}>
                   governance polls
                 </StyledLink>
