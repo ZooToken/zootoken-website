@@ -266,7 +266,7 @@ const AuctionPage: NextPage = () => {
     <>
       <AuctionPageWrapper>
         <HeaderContainer>
-          <StyledH1>Own ZOO and be part of NFT history!</StyledH1>
+          <StyledH1>The Bronx ZOO parcel has been sold!</StyledH1>
 
           <StyledHeaderP
             style={{ fontSize: '18px', maxWidth: '650px', marginBottom: '1em' }}
@@ -287,9 +287,8 @@ const AuctionPage: NextPage = () => {
             >
               Ogar
             </StyledLink>
-            , will be sold in a trustless dutch auction starting on April 20,
-            2021, with a starting price of 100 ETH. Over the next ten days, the
-            parcel will decrease in price by 0.1 ETH increments until it sells.
+            , has been sold via a trustless dutch auction. The auction started
+            on on April 20, 2021, with a starting price of 100 ETH.
           </StyledHeaderP>
 
           <StyledHeaderP
@@ -304,9 +303,9 @@ const AuctionPage: NextPage = () => {
           <StyledHeaderP
             style={{ fontSize: '18px', maxWidth: '650px', marginBottom: '1em' }}
           >
-            While the future of the Bronx Zoo beyond the auction is uncertain,
+            {/* While the future of the Bronx Zoo beyond the auction is uncertain,
             what is certain is that history will be made in this first-ever
-            fractionalized CryptoVoxel NFT parcel sale.
+            fractionalized CryptoVoxel NFT parcel sale. */}
             {/* TODO add link to announcemnt here Help us spread the word,
             and we’ll see all you wild things at the auction! */}
           </StyledHeaderP>
@@ -430,11 +429,11 @@ const AuctionStateInfo: FC<ActionStateInfoProps> = ({
         )
           .div(1e18)
           .toFixed(4);
-        const redeemedEthFormatted = new Decimal(
-          burnAndReedemConfirmation.amountEthRedeemed.toString(),
-        )
-          .div(1e18)
-          .toFixed(4);
+        // const redeemedEthFormatted = new Decimal(
+        //   burnAndReedemConfirmation.amountEthRedeemed.toString(),
+        // )
+        //   .div(1e18)
+        //   .toFixed(4);
 
         return (
           <>
@@ -443,14 +442,17 @@ const AuctionStateInfo: FC<ActionStateInfoProps> = ({
               fontWeight={fontWeights.semiBold}
               style={{ marginBottom: '10px', fontSize: '18px' }}
             >
-              Redeeming {burnedZooFormatted} ZOO for {redeemedEthFormatted} ETH
-              ⏱ (
+              Submitted transaction to redeem {burnedZooFormatted} ZOO ⏱ (
               <StyledLink
-                style={{ color: 'white' }}
+                style={{
+                  color: 'white',
+                  textDecoration: 'underline',
+                  fontWeight: 'bold',
+                }}
                 external
                 href={`https://etherscan.io/tx/${burnAndReedemConfirmation.txHash}`}
               >
-                See transaction
+                View transaction
               </StyledLink>
               )
             </P>
@@ -463,6 +465,27 @@ const AuctionStateInfo: FC<ActionStateInfoProps> = ({
           .div(1e18)
           .toFixed(2);
 
+        let zooBalanceRegular: number = 0;
+        if (accountZooBalance) {
+          zooBalanceRegular = parseFloat(
+            (parseInt(accountZooBalance.toString()) / 10 ** 18).toFixed(2),
+          );
+        }
+
+        let totalEthRegular: number = 0;
+        if (accountZooBalance) {
+          const fractionOfTotalZoo =
+            parseFloat(accountZooBalance.toString()) / (10_000 * 10 ** 18);
+          // const totalEthWei = parseFloat(
+          //   metadata.parcelPurchasedPrice.mul(fractionOfTotalZoo).toString(),
+          // );
+          const totalEthWei =
+            parseFloat(metadata.parcelPurchasedPrice.toString()) *
+            fractionOfTotalZoo;
+          totalEthRegular = totalEthWei / 10 ** 18;
+          totalEthRegular = parseFloat(totalEthRegular.toFixed(6));
+        }
+
         return (
           <>
             <P
@@ -472,13 +495,31 @@ const AuctionStateInfo: FC<ActionStateInfoProps> = ({
             >
               The Zoo has been sold for {soldPriceFormatted} ETH 🎉
             </P>
-            {accountZooBalance?.gt(0) && (
-              <GoldenPrimaryButton
-                style={{ width: '250px' }}
-                onClick={burnAndRedeemCB}
+            {!account && (
+              <p style={{ color: 'white', fontSize: '18px' }}>
+                Connect your wallet to burn your ZOO and redeem ETH.
+              </p>
+            )}
+            {account && accountZooBalance && accountZooBalance.eq(0) && (
+              <p
+                style={{ marginTop: '10px', fontSize: '18px', color: 'white' }}
               >
-                Burn ZOO and claim ETH 🔥
-              </GoldenPrimaryButton>
+                You have zero ZOO tokens.
+              </p>
+            )}
+            {accountZooBalance?.gt(0) && (
+              <div style={{ color: 'white' }}>
+                <GoldenPrimaryButton
+                  style={{ width: '250px' }}
+                  onClick={burnAndRedeemCB}
+                >
+                  Burn ZOO and claim ETH 🔥
+                </GoldenPrimaryButton>
+                <p style={{ marginTop: '10px', fontSize: '18px' }}>
+                  You have {zooBalanceRegular.toString()} ZOO tokens. Burning
+                  them will redeem {totalEthRegular} ETH.
+                </p>
+              </div>
             )}
           </>
         );
