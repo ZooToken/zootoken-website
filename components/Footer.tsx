@@ -110,15 +110,13 @@ export const Footer: React.FC = () => {
     <PageFooter>
       <SplitLayout style={{ margin: 'auto', maxWidth: '1440px' }}>
         <Column style={{ justifyContent: 'center' }}>
-          <H3WithMobileMargin>
-            Own a piece of virtual zoo estate
-          </H3WithMobileMargin>
+          <H3WithMobileMargin>The ZOO has been sold.</H3WithMobileMargin>
         </Column>
         {!isAuctionPage && (
           <Column style={{ justifyContent: 'center' }}>
             <Link passHref href={routes.AUCTION}>
               <PrimaryButtonLink as="a" style={{ width: '306px' }}>
-                Buy the ZOO
+                View Auction
               </PrimaryButtonLink>
             </Link>
           </Column>

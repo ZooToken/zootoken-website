@@ -159,7 +159,7 @@ const HomePage: NextPage = () => {
                 <Flex>
                   <Link passHref href={routes.AUCTION}>
                     <GoldenPrimaryButtonLink as="a" style={{ width: '162px' }}>
-                      Buy the ZOO
+                      View The Auction
                     </GoldenPrimaryButtonLink>
                   </Link>
                 </Flex>
