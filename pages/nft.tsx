@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import { H1, P } from '../components/Typography';
+import { NFTClaim } from '../components/NFTClaim';
 
 const NFTPageWrapper = styled.div`
   background: #f6f6ff;
@@ -73,7 +74,7 @@ const NFTPage: NextPage = () => {
             <p style={{ fontSize: '20px' }}>
               NFT will be claimable on or before May 5th.
             </p>
-            {/* <NFTClaim /> */}
+            <NFTClaim />
           </div>
         </MeatContainer>
       </NFTPageWrapper>

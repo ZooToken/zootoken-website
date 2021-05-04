@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { BaseLink } from './BaseLink';
 import { GoldenPrimaryButton } from './Buttons';
 import { useState } from 'react';
+import { Nftdrop__factory } from '../utils/zoo_contract/factories/Nftdrop__factory';
+import { getNftDropAddress } from '../utils/config';
 
 const StyledConnectLink = styled(BaseLink)`
   text-decoration: underline;
@@ -27,7 +29,7 @@ const PrimaryButtonLink = styled(GoldenPrimaryButton)`
 `;
 
 export const NFTClaim = (props: {}) => {
-  const { account } = useWeb3React();
+  const { account, chainId, library } = useWeb3React();
   console.log(props);
 
   const [ethereumAddress, setEthereumAddress] = useState<string>(account || '');
@@ -36,7 +38,7 @@ export const NFTClaim = (props: {}) => {
     'ready' | 'loading' | 'eligibile' | 'not-eligible'
   >('ready');
 
-  if (!account) {
+  if (!account || !chainId) {
     return (
       <div style={{ color: 'white' }}>
         <StyledConnectLink href={routes.LOGIN}>
@@ -45,6 +47,9 @@ export const NFTClaim = (props: {}) => {
       </div>
     );
   }
+
+  const nftAddress = getNftDropAddress(chainId);
+  const nftDrop = Nftdrop__factory.connect(nftAddress, library.provider);
 
   const checkEligibility = async () => {
     setCheckingState('loading');
