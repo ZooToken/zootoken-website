@@ -68,6 +68,7 @@ export const NFTRedeem = (props: { dropInfo: DropInfo; address: string }) => {
     } else if (data === 'valid') {
       return <NFTRedeemButton dropInfo={dropInfo} />;
     } else if (data === 'invalid') {
+      console.log('data invalid');
       return <p>Something went wrong, please contact us on telegram.</p>;
     } else if (data == 'already_redeemed') {
       return <p>This address has already redeemed their NFT.</p>;
