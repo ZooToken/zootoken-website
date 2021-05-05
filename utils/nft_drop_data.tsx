@@ -1,6 +1,4 @@
-import { TrustWalletIcon } from '../components/icons/TrustWallet';
-
-interface DropInfo {
+export interface DropInfo {
   address: string;
   r: string;
   s: string;
@@ -32,6 +30,18 @@ export const getDropInfo = (chainId: number): DropInfo[] => {
         address: '0xb3F193A55867AB7153c5731d667cebDF75C3f192',
         r: '0x27e69d09b324667d05a1951126dd411d49e5445d09d59532f71395be284c3f7d',
         s: '0x242fc25cffd428472d25653faa7d75f460ebba04fd5e561cf54fc8d16e3c18bd',
+        v: 27,
+      },
+      {
+        address: '0x7bAEC26d7183e744F2214E98651936AE2989dAF8',
+        r: '0x722cc66a03e1d84f63e55dbfe5efdf4f056a6fd5eef8623ad7e14c4ee699446d',
+        s: '0x0de542231fb256d78b44e9c657a8b9742cc287e95575d3efd5c1736b2656ed76',
+        v: 27,
+      },
+      {
+        address: '0x5409ED021D9299bf6814279A6A1411A7e866A631',
+        r: '0xd4733438e791a47159b82f7f54a5bede50fe98cfab6c4da404b332e19d2b3e82',
+        s: '0x7fe7d53b8b61e48e7ba09d3ef3219af59a7b95fcffe7caac8ce0c35db1c9c5cf',
         v: 27,
       },
     ];

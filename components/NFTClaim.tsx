@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import { BaseLink } from './BaseLink';
 import { GoldenPrimaryButton } from './Buttons';
 import { useState } from 'react';
-import { Nftdrop__factory } from '../utils/zoo_contract/factories/Nftdrop__factory';
-import { getNftDropAddress } from '../utils/config';
+import { NFTRedeem } from './NFTRedeem';
 import {
   DropInfoResponse,
   getDropInfoForAddress,
@@ -33,7 +32,7 @@ const PrimaryButtonLink = styled(GoldenPrimaryButton)`
 `;
 
 export const NFTClaim = (props: {}) => {
-  const { account, chainId, library } = useWeb3React();
+  const { account, chainId } = useWeb3React();
   console.log(props);
 
   const [ethereumAddress, setEthereumAddress] = useState<string>(account || '');
@@ -73,9 +72,14 @@ export const NFTClaim = (props: {}) => {
     } else {
       console.log({ checkingState });
       if (checkingState.found) {
-        return <p>FOUND</p>;
+        return (
+          <NFTRedeem
+            address={ethereumAddress}
+            dropInfo={checkingState.dropInfo}
+          />
+        );
       } else {
-        return <p>NOT FOUND</p>;
+        return <p>This address it not eligible for the NFT airdrop.</p>;
       }
     }
   };
