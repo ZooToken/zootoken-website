@@ -87,7 +87,9 @@ export const NFTClaim = (props: {}) => {
   return (
     <div style={{ textAlign: 'center', margin: 'auto' }}>
       {checkingState === 'ready' && (
-        <p style={{ fontSize: '20px' }}>Enter ethereum address:</p>
+        <p style={{ fontSize: '20px', marginBottom: '10px' }}>
+          Enter ethereum address to check airdrop eligibility:
+        </p>
       )}
       {checkingState === 'ready' && (
         <input

@@ -10,6 +10,11 @@ export const getNftDropAddress = (chainId: number) => {
   if (chainId === 4) {
     return '0xc5ffd546cec8f195aac4291ba2c4d74daabecc68';
   }
+
+  if (chainId === 1) {
+    return '0x33d8e7737df050f9673966f3cdc306a440045a1f';
+  }
+
   throw new Error(`unexpected chain id ${chainId} for address`);
 };
 

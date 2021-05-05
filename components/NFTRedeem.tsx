@@ -46,8 +46,8 @@ export const NFTRedeem = (props: { dropInfo: DropInfo; address: string }) => {
     },
     {
       revalidateOnFocus: false,
-      revalidateOnMount: false,
-      revalidateOnReconnect: false,
+      revalidateOnMount: true,
+      revalidateOnReconnect: true,
       refreshWhenOffline: false,
       refreshWhenHidden: false,
       refreshInterval: 0,
