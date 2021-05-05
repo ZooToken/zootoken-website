@@ -6,6 +6,10 @@ import { GoldenPrimaryButton } from './Buttons';
 import { useState } from 'react';
 import { Nftdrop__factory } from '../utils/zoo_contract/factories/Nftdrop__factory';
 import { getNftDropAddress } from '../utils/config';
+import {
+  DropInfoResponse,
+  getDropInfoForAddress,
+} from '../utils/nft_drop_data';
 
 const StyledConnectLink = styled(BaseLink)`
   text-decoration: underline;
@@ -35,7 +39,7 @@ export const NFTClaim = (props: {}) => {
   const [ethereumAddress, setEthereumAddress] = useState<string>(account || '');
 
   const [checkingState, setCheckingState] = useState<
-    'ready' | 'loading' | 'eligibile' | 'not-eligible'
+    'ready' | 'loading' | DropInfoResponse
   >('ready');
 
   if (!account || !chainId) {
@@ -48,44 +52,62 @@ export const NFTClaim = (props: {}) => {
     );
   }
 
-  const nftAddress = getNftDropAddress(chainId);
-  const nftDrop = Nftdrop__factory.connect(nftAddress, library.provider);
+  // const nftDrop = Nftdrop__factory.connect(nftAddress, library.provider);
 
   const checkEligibility = async () => {
     setCheckingState('loading');
+
+    const dropResponse = getDropInfoForAddress(ethereumAddress, chainId);
+    setCheckingState(dropResponse);
+  };
+
+  const renderMain = () => {
+    if (checkingState === 'ready') {
+      return (
+        <PrimaryButtonLink onClick={checkEligibility}>
+          Check eligibility
+        </PrimaryButtonLink>
+      );
+    } else if (checkingState === 'loading') {
+      return <p>Loading..</p>;
+    } else {
+      console.log({ checkingState });
+      if (checkingState.found) {
+        return <p>FOUND</p>;
+      } else {
+        return <p>NOT FOUND</p>;
+      }
+    }
   };
 
   return (
     <div style={{ textAlign: 'center', margin: 'auto' }}>
-      <p style={{ fontSize: '20px' }}>Enter ethereum address:</p>
-      <input
-        type="text"
-        value={ethereumAddress}
-        onChange={(e) => {
-          e.preventDefault();
-          setEthereumAddress(e.target.value);
-        }}
-        onClick={() => {
-          console.log('clicked');
-          if (account && ethereumAddress == '') {
-            setEthereumAddress(account);
-          }
-        }}
-        style={{
-          marginBottom: '20px',
-          padding: '20px',
-          width: '400px',
-          margin: 'auto',
-        }}
-      />
-      <div style={{ marginTop: '20px' }}>
-        {checkingState === 'ready' && (
-          <PrimaryButtonLink onClick={checkEligibility}>
-            Check eligibility
-          </PrimaryButtonLink>
-        )}
-        {checkingState === 'loading' && <p>Loading..</p>}
-      </div>
+      {checkingState === 'ready' && (
+        <p style={{ fontSize: '20px' }}>Enter ethereum address:</p>
+      )}
+      {checkingState === 'ready' && (
+        <input
+          type="text"
+          value={ethereumAddress}
+          onChange={(e) => {
+            e.preventDefault();
+            console.log('setting to', e.target.value);
+            setEthereumAddress(e.target.value);
+          }}
+          onClick={() => {
+            if (account && ethereumAddress == '') {
+              setEthereumAddress(account);
+            }
+          }}
+          style={{
+            marginBottom: '20px',
+            padding: '20px',
+            width: '400px',
+            margin: 'auto',
+          }}
+        />
+      )}
+      <div style={{ marginTop: '20px' }}>{renderMain()}</div>
     </div>
   );
 };

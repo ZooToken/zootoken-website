@@ -71,9 +71,6 @@ const NFTPage: NextPage = () => {
             />
           </a>
           <div style={{ color: 'white' }}>
-            <p style={{ fontSize: '20px' }}>
-              NFT will be claimable on or before May 5th.
-            </p>
             <NFTClaim />
           </div>
         </MeatContainer>
