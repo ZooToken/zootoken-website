@@ -3,6 +3,7 @@ const routes = {
   LOGIN: '/login',
   GOVERNANCE: '/governance',
   AUCTION: '/auction',
+  NFT: '/nft',
 };
 
 export { routes };

@@ -6,7 +6,7 @@ This repo holds the [ZooToken website](http://zootoken.club), new features and i
 
 ## Visiting the ZOO Cryptovoxels parcel
 
-The Zoo is located in the Brooklyn island of the Cryptovoxels metaverse and can be viewed at coordinates [here](https://www.cryptovoxels.com/play?coords=N@784E,54N).
+The Zoo is located in the Brooklyn island of the Cryptovoxels metaverse and can be viewed at coordinates [here](https://www.cryptovoxels.com/play?coords=N@784E,54N)!
 
 ## Getting started locally
 

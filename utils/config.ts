@@ -3,8 +3,20 @@ export const WEB3_APP_DISPLAY_NAME = 'ZooToken';
 export const PRODUCTION_ROOT_URL = 'zootoken.club';
 export const PRODUCTION_ROOT_URLS = [PRODUCTION_ROOT_URL];
 
-export const SUPPORTED_CHAIN_IDS = [1, 42, 3];
-export const DEFAULT_CHAIN_ID = 1;
+export const SUPPORTED_CHAIN_IDS = [1, 42, 3, 4];
+export const DEFAULT_CHAIN_ID = 1; // dont commit
+
+export const getNftDropAddress = (chainId: number) => {
+  if (chainId === 4) {
+    return '0xc5ffd546cec8f195aac4291ba2c4d74daabecc68';
+  }
+
+  if (chainId === 1) {
+    return '0x33d8e7737df050f9673966f3cdc306a440045a1f';
+  }
+
+  throw new Error(`unexpected chain id ${chainId} for address`);
+};
 
 export const ZOOTOKEN_CONTRACT_ETHERSCAN_URL =
   'https://etherscan.io/address/0x1af39b291fcd158ade7b85d83f1044d02ab8d6c2#code';
